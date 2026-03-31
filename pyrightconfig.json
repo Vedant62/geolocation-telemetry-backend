@@ -1,0 +1,16 @@
+{
+  "venvPath": "auth-api/src",
+  "venv": "env",
+  "executionEnvironments": [
+    {
+      "root": "auth-api/src",
+      "extraPaths": [
+        "."
+      ]
+    }
+  ],
+  "exclude": [
+    "**/env",
+    "**/.venv"
+  ]
+}
