@@ -1,20 +1,24 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+import os
+
+from dotenv import load_dotenv
 
 
-class Settings(BaseSettings):
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        extra="ignore",
-    )
+load_dotenv()
 
-    database_url: str = "DB_URL"
 
-    secret: str = "YOUR_SECRET"
-    algorithm: str = "HS256"
-    access_token_expire_minutes : int = 30
+class Settings:
+    def __init__(self) -> None:
+        self.database_url: str = os.getenv(
+            "DATABASE_URL",
+            "postgresql+asyncpg://<POSTGRES_USER>:<POSTGRES_PWD>@localhost:5432/<POSTGRES_DB_NAME>",
+        )
+        self.secret: str = os.getenv("SECRET", "<YOUR-SECRET-HERE>")
+        self.algorithm: str = os.getenv("ALGORITHM", "HS256")
+        self.access_token_expire_minutes: int = int(
+            os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30")
+        )
+        self.kafka_server_url: str = os.getenv("KAFKA_SERVER_URL", "localhost:9092")
 
-    kafka_server_url: str = "YOUR_KAFKA_SERVER_URL" #does not need to be list of all, just one that would respond to the Metadata API
 
 settings = Settings()
 

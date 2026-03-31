@@ -1,5 +1,6 @@
 shared/config.py
-
+docker-compose.yml
+docker-compose.worker.yml
 env/
 venv/
 ENV/

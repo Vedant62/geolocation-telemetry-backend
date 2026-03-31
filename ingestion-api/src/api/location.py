@@ -12,7 +12,6 @@ async def pong():
 
 @router.post("/send")
 async def get_location(location: Location, payload: auth_dependency, producer : AIOKafkaProducer = Depends(get_producer)):
-    print(f"Location got: {{ {location.lat}, {location.lon} }} \nPayload: {payload}");
 
     event = {
         "user_id" : payload.get("sub"),
