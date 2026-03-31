@@ -14,5 +14,7 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     access_token_expire_minutes : int = 30
 
+    kafka_server_url: str = "YOUR_KAFKA_SERVER_URL" #does not need to be list of all, just one that would respond to the Metadata API
+
 settings = Settings()
 

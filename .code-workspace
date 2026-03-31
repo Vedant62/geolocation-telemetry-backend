@@ -1,0 +1,10 @@
+{
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder:ingestion-api}/src/env/bin/python"
+  },
+  "folders": [
+    { "path": "auth-api" },
+    { "path": "ingestion-api" },
+    { "path": "shared" }
+  ]
+}

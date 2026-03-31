@@ -1,0 +1,11 @@
+{
+  "include": ["src"],
+  "venvPath": "src",
+  "venv": "env",
+  "executionEnvironments": [
+    {
+      "root": "src",
+      "extraPaths": ["../shared"]
+    }
+  ]
+}
