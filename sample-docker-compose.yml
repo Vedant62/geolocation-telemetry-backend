@@ -11,7 +11,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U <DB_USER_NAME> -d <DB_NAME>"]
+      test: ["CMD-SHELL", "pg_isready -U <POSTGRES_USER> -d <POSTGRES_DB_NAME>"]
       interval: 5s
       timeout: 5s
       retries: 20
@@ -59,7 +59,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql+asyncpg://<DB_USER_NAME>:<DB_PWD>@postgres:5432/<DB_NAME>
+      DATABASE_URL: postgresql+asyncpg://<POSTGRES_USER>:<POSTGRES_PWD>@postgres:5432/<POSTGRES_DB_NAME>
       KAFKA_SERVER_URL: kafka:29092
       SECRET: your_secret_here
       ALGORITHM: HS256
@@ -76,7 +76,7 @@ services:
       kafka:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql+asyncpg://<DB_USER_NAME>:<DB_PWD>@postgres:5432/<DB_NAME>
+      DATABASE_URL: postgresql+asyncpg://<POSTGRES_USER>:<POSTGRES_PWD>@postgres:5432/<POSTGRES_DB_NAME>
       KAFKA_SERVER_URL: kafka:29092
       SECRET: your_secret_here
       ALGORITHM: HS256
